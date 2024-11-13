@@ -42,46 +42,54 @@ export default function HomePage() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto space-y-6">
-      <h2 className="text-xl font-semibold text-center mb-4">
-        Generate Your AI Prompt
-      </h2>
-      <select
-        value={selectedUseCase}
-        onChange={(e) => setSelectedUseCase(e.target.value)}
-        className="w-full p-2 border border-gray-800 bg-primary text-secondary rounded"
-      >
-        <option value="" disabled>
-          Select Use Case
-        </option>
-        {useCases.map((useCase) => (
-          <option key={useCase.id} value={useCase.id}>
-            {useCase.label}
+    <div className="flex flex-col items-center justify-center min-h-screen bg-primary text-secondary">
+      <div className="bg-gray-900 p-8 rounded-lg shadow-lg max-w-md w-full space-y-6 text-center">
+        <h2 className="text-3xl font-extrabold mb-4">AI Prompt Generator</h2>
+        <p className="text-lg text-gray-400">
+          Generate Your AI Prompt with Ease
+        </p>
+
+        <select
+          value={selectedUseCase}
+          onChange={(e) => setSelectedUseCase(e.target.value)}
+          className="w-full p-3 border border-gray-700 bg-gray-800 text-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-gray-600"
+        >
+          <option value="" disabled>
+            Select Use Case
           </option>
-        ))}
-      </select>
+          {useCases.map((useCase) => (
+            <option key={useCase.id} value={useCase.id}>
+              {useCase.label}
+            </option>
+          ))}
+        </select>
 
-      <textarea
-        value={prompt}
-        onChange={(e) => setPrompt(e.target.value)}
-        placeholder="Enter your initial prompt here"
-        className="w-full p-3 border border-gray-800 bg-primary text-secondary rounded"
-        rows={4}
-      />
+        <textarea
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+          placeholder="Enter your initial prompt here"
+          className="w-full p-3 border border-gray-700 bg-gray-800 text-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-gray-600 resize-none"
+          rows={5}
+        />
 
-      <button
-        onClick={handleGeneratePrompt}
-        className="w-full p-3 font-semibold text-primary bg-secondary rounded"
-      >
-        Generate Prompt
-      </button>
+        <button
+          onClick={handleGeneratePrompt}
+          className="w-full py-3 font-semibold text-primary bg-secondary rounded hover:bg-gray-200 transition text-lg"
+        >
+          Generate Prompt
+        </button>
 
-      {enhancedPrompt && (
-        <div className="p-4 border border-gray-800 bg-primary text-secondary rounded mt-4">
-          <h3 className="font-semibold">Enhanced Prompt:</h3>
-          <p>{enhancedPrompt}</p>
-        </div>
-      )}
+        {enhancedPrompt && (
+          <div className="bg-gray-800 p-4 border border-gray-700 rounded mt-4 text-gray-200">
+            <h3 className="font-bold text-lg mb-2">Enhanced Prompt:</h3>
+            <p className="whitespace-pre-wrap">{enhancedPrompt}</p>
+          </div>
+        )}
+      </div>
+
+      <footer className="text-center text-sm mt-8 text-gray-500">
+        © 2024 AI Prompt Generator
+      </footer>
     </div>
   );
 }
