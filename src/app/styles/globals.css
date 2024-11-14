@@ -31,6 +31,6 @@ body {
   height: 1em;
 }
 
-/* button svg {
+button .absolute:has(svg) {
   display: none;
-} */
+}
