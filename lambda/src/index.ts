@@ -35,11 +35,6 @@ const useCaseConfigs: {
       "You are a Prompt Engineer. Create a prompt to guide AI in generating a professional and empathetic customer service response. Instruct the AI to address the customer’s concerns directly and politely, using a warm, helpful tone. Avoid generating the response yourself; provide only the guiding prompt. Limit the response to 800 characters",
     temperature: 0.3,
   },
-  socialMediaPost: {
-    systemPrompt:
-      "You are a Prompt Engineer. Formulate a prompt that will guide AI in creating a captivating and visually appealing social media post aimed at engaging the target audience. Specify relevant hashtags, desired tone, and any specific points to highlight. Avoid creating the post yourself; provide only the guiding prompt. Limit the response to 800 characters",
-    temperature: 0.8,
-  },
   FAQGeneration: {
     systemPrompt:
       "You are a Prompt Engineer. Create a prompt to guide AI in generating frequently asked questions (FAQs) relevant to the given topic. Instruct the AI to cover common queries and provide clear, concise answers. Avoid generating the FAQs; provide only the guiding prompt. Limit the response to 800 characters",
@@ -57,7 +52,7 @@ const useCaseConfigs: {
   },
   generalEnhancement: {
     systemPrompt:
-      "You are a Prompt Engineer. Based on the provided input, create the best possible prompt to guide an AI to achieve the desired outcome. Enhance clarity, structure, and provide specific guidance where possible. Avoid generating the content; provide only the most effective guiding prompt. Limit the response to 800 characters",
+      "You are a Prompt Engineer. Based on the provided input, create the best possible prompt to guide an AI to achieve the desired outcome. Enhance clarity, structure, and provide specific guidance where possible. Do not generate the content; provide only the most effective guiding prompt. Limit the response to 800 characters",
     temperature: 0.6,
   },
   codeGeneration: {
@@ -109,7 +104,7 @@ export const handler = async (event: APIGatewayEvent) => {
     const openAiResponse = await axios.post(
       "https://api.openai.com/v1/chat/completions",
       {
-        model: "gpt-3.5-turbo",
+        model: "chatgpt-4o-latest",
         messages: [
           { role: "system", content: config.systemPrompt },
           { role: "user", content: prompt },

@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import "./_app";
-import { Select as SelectMUI } from "@material-tailwind/react";
 import Image from "next/image";
 
 interface LayoutProps {
@@ -16,16 +15,18 @@ const Layout = ({ children }: LayoutProps) => {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </head>
       <body className="bg-gray-100 text-gray-900 h-screen font-inter">
         <div className="flex flex-col min-h-screen justify-between">
-          <header className="mx-auto max-w-screen-xl py-4 px-8 rounded-none justify-items-center bg-gray-200 w-full shadow-lg">
+          <header className="mx-auto py-4 px-8 rounded-none justify-items-center bg-gray-200 w-full shadow-inner">
             <Image
               src={"/logo.png"}
               alt={"AI Prompt Generator Logo"}
               width={455}
               height={79}
               className="shadow-lg"
+              priority={true}
             />
           </header>
           <main className="flex-grow p-4 flex items-center justify-center bg-gray-100">

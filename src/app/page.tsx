@@ -20,6 +20,10 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleGeneratePrompt = async () => {
+    if (!prompt.trim()) {
+      alert("Please enter a prompt before generating.");
+      return;
+    }
     setIsLoading(true);
     try {
       const response = await fetch("/api/generate", {
@@ -77,7 +81,7 @@ export default function HomePage() {
           </div>
         </div>
         <CardBody>
-          <div className="space-y-4">
+          <div className="space-y-2">
             <Typography variant="h6" className="text-purple-500">
               Select Use Case
             </Typography>
@@ -99,7 +103,7 @@ export default function HomePage() {
                 className="hover:bg-gray-200 transition-all px-2"
                 value="generalEnhancement"
               >
-                Click to choose any use case...
+                Click to choose a use case / Just enter a prompt below...
               </OptionMUI>
               <OptionMUI
                 className="hover:bg-gray-200 transition-all px-2"
@@ -145,12 +149,6 @@ export default function HomePage() {
               </OptionMUI>
               <OptionMUI
                 className="hover:bg-gray-200 transition-all px-2"
-                value="socialMediaPost"
-              >
-                Social Media Post
-              </OptionMUI>
-              <OptionMUI
-                className="hover:bg-gray-200 transition-all px-2"
                 value="FAQGeneration"
               >
                 FAQ Generation
@@ -180,7 +178,7 @@ export default function HomePage() {
             <Textarea
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
-              className="w-full p-3 border border-purple-300 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full p-3 mb-3 border border-purple-300 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500"
               rows={4}
               placeholder="Enter a brief prompt here..."
             />
