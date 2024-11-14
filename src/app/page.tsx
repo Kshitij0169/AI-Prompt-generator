@@ -1,11 +1,10 @@
 "use client";
 import { useState } from "react";
 import {
-  Button,
-  Card,
-  CardBody,
-  Textarea,
-  Typography,
+  Card as CardMUI,
+  CardBody as CardBodyMUI,
+  Textarea as TextareaMUI,
+  Typography as TypographyMUI,
 } from "@material-tailwind/react";
 
 import {
@@ -49,37 +48,24 @@ export default function HomePage() {
     <div className="flex items-center justify-center h-full min-w-full bg-gray-100">
       {isLoading && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 transition-opacity duration-300 ease-in-out">
-          <Card
-            className="p-6 rounded-lg flex items-center justify-center shadow-lg bg-white border border-gray-300"
-            placeholder={undefined}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          >
-            <Typography
+          <CardMUI className="p-6 rounded-lg flex items-center justify-center shadow-lg bg-white border border-gray-300">
+            <TypographyMUI
               variant="h4"
               className="text-[#9869b8] mb-4 text-center text-xl animate-pulse"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
             >
               Generating Prompt...
-            </Typography>
+            </TypographyMUI>
             <div className="w-full gap-x-2 flex justify-center items-center">
               <div className="w-5 bg-[#d991c2] h-5 rounded-full animate-bounce"></div>
               <div className="w-5 h-5 bg-[#9869b8] rounded-full animate-bounce [animation-delay:-.3s]"></div>
               <div className="w-5 h-5 bg-[#6756cc] rounded-full animate-bounce [animation-delay:-.5s]"></div>
             </div>
-          </Card>
+          </CardMUI>
         </div>
       )}
-      <Card
-        className="w-full max-w-2xl p-8 rounded-lg shadow-lg bg-white border border-purple-300"
-        placeholder={undefined}
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
-      >
+      <CardMUI className="w-full max-w-2xl p-8 rounded-lg shadow-lg bg-white border border-purple-300">
         <div>
-          <Typography
+          <TypographyMUI
             variant="h4"
             className="mb-6 text-2xl text-center text-purple-700"
             placeholder={undefined}
@@ -87,7 +73,7 @@ export default function HomePage() {
             onPointerLeaveCapture={undefined}
           >
             Your Personal Prompt Engineer
-          </Typography>
+          </TypographyMUI>
           <div className="w-full relative flex flex-col items-center justify-center pb-5">
             <div className="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-full blur-sm"></div>
             <div className="absolute inset-x-auto top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-full"></div>
@@ -96,13 +82,9 @@ export default function HomePage() {
             <div className="absolute inset-0 w-full h-full bg-background [mask-image:radial-gradient(50%_200px_at_top,transparent_20%,white)]"></div>
           </div>
         </div>
-        <CardBody
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
+        <CardBodyMUI>
           <div className="space-y-2">
-            <Typography
+            <TypographyMUI
               variant="h6"
               className="text-purple-500"
               placeholder={undefined}
@@ -110,7 +92,7 @@ export default function HomePage() {
               onPointerLeaveCapture={undefined}
             >
               Select Use Case
-            </Typography>
+            </TypographyMUI>
             <SelectMUI
               value={useCase}
               onChange={(value) => setUseCase(value || "")}
@@ -201,23 +183,15 @@ export default function HomePage() {
                 Code Generation
               </OptionMUI>
             </SelectMUI>
-            <Typography
-              variant="h6"
-              className="text-purple-500"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
+            <TypographyMUI variant="h6" className="text-purple-500">
               Enter Prompt
-            </Typography>
-            <Textarea
+            </TypographyMUI>
+            <TextareaMUI
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               className="w-full p-3 mb-3 border border-purple-300 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500"
               rows={4}
               placeholder="Enter a brief prompt here..."
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
             />
           </div>
           {/* /* From Uiverse.io by elijahgummer */}
@@ -231,26 +205,15 @@ export default function HomePage() {
             </div>
           </button>
           <div className="bg-white p-4 rounded-lg border border-purple-300 mt-4">
-            <Typography
-              variant="h6"
-              className="text-purple-500"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
+            <TypographyMUI variant="h6" className="text-purple-500">
               Enhanced Prompt:
-            </Typography>
-            <Typography
-              className="mt-2 text-gray-400"
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            >
+            </TypographyMUI>
+            <TypographyMUI className="mt-2 text-gray-400">
               {enhancedPrompt || "Your enhanced prompt will appear here..."}
-            </Typography>
+            </TypographyMUI>
           </div>
-        </CardBody>
-      </Card>
+        </CardBodyMUI>
+      </CardMUI>
     </div>
   );
 }
