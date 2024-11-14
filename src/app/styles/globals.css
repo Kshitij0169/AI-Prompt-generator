@@ -18,7 +18,19 @@
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #121212; /* Dark background for cyberpunk feel */
+  color: #ffffff;
 }
+
+.glow-effect {
+  box-shadow: 0 0 10px #00f6ff, 0 0 20px #ff2079, 0 0 30px #43e97b;
+}
+
+.select-container svg {
+  width: 1em;
+  height: 1em;
+}
+
+/* button svg {
+  display: none;
+} */

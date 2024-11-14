@@ -1,24 +1,21 @@
 "use client";
 import { useState } from "react";
+import {
+  Button,
+  Card,
+  CardBody,
+  Textarea,
+  Typography,
+} from "@material-tailwind/react";
 
-const useCases = [
-  { id: "contentGeneration", label: "Content Generation" },
-  { id: "codeReview", label: "Code Review" },
-  { id: "summarization", label: "Summarization" },
-  { id: "translation", label: "Translation" },
-  { id: "grammarCorrection", label: "Grammar Correction" },
-  { id: "customerServiceResponse", label: "Customer Service Response" },
-  { id: "socialMediaPost", label: "Social Media Post" },
-  { id: "FAQGeneration", label: "FAQ Generation" },
-  { id: "emailDrafting", label: "Email Drafting" },
-  { id: "reportAnalysis", label: "Report Analysis" },
-  { id: "generalEnhancement", label: "General Enhancement" },
-  { id: "codeGeneration", label: "Code Generation" },
-];
+import {
+  Select as SelectMUI,
+  Option as OptionMUI,
+} from "@material-tailwind/react";
 
 export default function HomePage() {
-  const [selectedUseCase, setSelectedUseCase] = useState("");
   const [prompt, setPrompt] = useState("");
+  const [useCase, setUseCase] = useState("generalEnhancement");
   const [enhancedPrompt, setEnhancedPrompt] = useState("");
 
   const handleGeneratePrompt = async () => {
@@ -28,9 +25,8 @@ export default function HomePage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ useCase: selectedUseCase, prompt }),
+        body: JSON.stringify({ useCase, prompt }),
       });
-
       const data = await response.json();
       setEnhancedPrompt(
         data.enhancedPrompt || "Error: Unable to generate prompt."
@@ -42,54 +38,89 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-primary text-secondary">
-      <div className="bg-gray-900 p-8 rounded-lg shadow-lg max-w-md w-full space-y-6 text-center">
-        <h2 className="text-3xl font-extrabold mb-4">AI Prompt Generator</h2>
-        <p className="text-lg text-gray-400">
-          Generate Your AI Prompt with Ease
-        </p>
-
-        <select
-          value={selectedUseCase}
-          onChange={(e) => setSelectedUseCase(e.target.value)}
-          className="w-full p-3 border border-gray-700 bg-gray-800 text-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-gray-600"
+    <div className="flex items-center justify-center h-full min-w-full bg-gray-100">
+      <Card className="w-full max-w-2xl p-8 rounded-lg shadow-lg bg-white border border-purple-300">
+        <Typography
+          variant="h4"
+          className="mb-6 text-2xl text-center text-purple-700"
         >
-          <option value="" disabled>
-            Select Use Case
-          </option>
-          {useCases.map((useCase) => (
-            <option key={useCase.id} value={useCase.id}>
-              {useCase.label}
-            </option>
-          ))}
-        </select>
+          Your Personal Prompt Engineer
+        </Typography>
+        <CardBody>
+          <div className="space-y-4">
+            <Typography variant="h6" className="text-purple-600">
+              Select Use Case
+            </Typography>
+            <SelectMUI
+              value={useCase}
+              onChange={(value) => setUseCase(value || "")}
+              className="p-3 h-11 max-h-20 border border-purple-300 rounded-lg text-center bg-white text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              menuProps={{
+                className:
+                  "bg-white text-gray-800 align-items-center justify-center",
+              }}
+            >
+              <OptionMUI value="generalEnhancement">
+                Click to choose any use case...
+              </OptionMUI>
+              <OptionMUI value="generalEnhancement">
+                General Enhancement
+              </OptionMUI>
+              <OptionMUI value="contentGeneration">
+                Content Generation
+              </OptionMUI>
+              <OptionMUI value="codeReview">Code Review</OptionMUI>
+              <OptionMUI value="summarization">Summarization</OptionMUI>
+              <OptionMUI value="translation">Translation</OptionMUI>
+              <OptionMUI value="grammarCorrection">
+                Grammar Correction
+              </OptionMUI>
+              <OptionMUI value="customerServiceResponse">
+                Customer Service Response
+              </OptionMUI>
+              <OptionMUI value="socialMediaPost">Social Media Post</OptionMUI>
+              <OptionMUI value="FAQGeneration">FAQ Generation</OptionMUI>
+              <OptionMUI value="emailDrafting">Email Drafting</OptionMUI>
+              <OptionMUI value="reportAnalysis">Report Analysis</OptionMUI>
+              <OptionMUI value="codeGeneration">Code Generation</OptionMUI>
+            </SelectMUI>
 
-        <textarea
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Enter your initial prompt here"
-          className="w-full p-3 border border-gray-700 bg-gray-800 text-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-gray-600 resize-none"
-          rows={5}
-        />
-
-        <button
-          onClick={handleGeneratePrompt}
-          className="w-full py-3 font-semibold text-primary bg-secondary rounded hover:bg-gray-200 transition text-lg"
-        >
-          Generate Prompt
-        </button>
-
-        {enhancedPrompt && (
-          <div className="bg-gray-800 p-4 border border-gray-700 rounded mt-4 text-gray-200">
-            <h3 className="font-bold text-lg mb-2">Enhanced Prompt:</h3>
-            <p className="whitespace-pre-wrap">{enhancedPrompt}</p>
+            <Typography variant="h6" className="text-purple-600">
+              Enter Prompt
+            </Typography>
+            <Textarea
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              className="w-full p-3 border border-purple-300 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              rows={4}
+              placeholder="Enter a brief prompt here..."
+            />
           </div>
-        )}
-      </div>
-
-      <footer className="text-center text-sm mt-8 text-gray-500">
-        © 2024 AI Prompt Generator
-      </footer>
+          {/* /* From Uiverse.io by elijahgummer */}
+          <button
+            onClick={handleGeneratePrompt}
+            className="group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-purple-800 backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-104 hover:shadow-xl hover:shadow-gray-600/50 border border-white/20 w-full hover:bg-purple-600"
+          >
+            <span className="text-lg">Generate Enhanced Prompt</span>
+            <div className="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]">
+              <div className="relative h-full w-10 bg-white/20"></div>
+            </div>
+          </button>
+          <div className="bg-white p-4 rounded-lg border border-purple-300 mt-4">
+            <Typography variant="h6" className="text-purple-600">
+              Enhanced Prompt:
+            </Typography>
+            <Typography className="mt-2 text-gray-400">
+              {enhancedPrompt || "Your enhanced prompt will appear here..."}
+            </Typography>
+          </div>
+        </CardBody>
+      </Card>
     </div>
   );
 }
