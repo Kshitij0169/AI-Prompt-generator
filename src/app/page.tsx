@@ -49,10 +49,18 @@ export default function HomePage() {
     <div className="flex items-center justify-center h-full min-w-full bg-gray-100">
       {isLoading && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 transition-opacity duration-300 ease-in-out">
-          <Card className="p-6 rounded-lg flex items-center justify-center shadow-lg bg-white border border-gray-300">
+          <Card
+            className="p-6 rounded-lg flex items-center justify-center shadow-lg bg-white border border-gray-300"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          >
             <Typography
               variant="h4"
               className="text-[#9869b8] mb-4 text-center text-xl animate-pulse"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
             >
               Generating Prompt...
             </Typography>
@@ -64,11 +72,19 @@ export default function HomePage() {
           </Card>
         </div>
       )}
-      <Card className="w-full max-w-2xl p-8 rounded-lg shadow-lg bg-white border border-purple-300">
+      <Card
+        className="w-full max-w-2xl p-8 rounded-lg shadow-lg bg-white border border-purple-300"
+        placeholder={undefined}
+        onPointerEnterCapture={undefined}
+        onPointerLeaveCapture={undefined}
+      >
         <div>
           <Typography
             variant="h4"
             className="mb-6 text-2xl text-center text-purple-700"
+            placeholder={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
           >
             Your Personal Prompt Engineer
           </Typography>
@@ -80,9 +96,19 @@ export default function HomePage() {
             <div className="absolute inset-0 w-full h-full bg-background [mask-image:radial-gradient(50%_200px_at_top,transparent_20%,white)]"></div>
           </div>
         </div>
-        <CardBody>
+        <CardBody
+          placeholder={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
           <div className="space-y-2">
-            <Typography variant="h6" className="text-purple-500">
+            <Typography
+              variant="h6"
+              className="text-purple-500"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
               Select Use Case
             </Typography>
             <SelectMUI
@@ -98,6 +124,9 @@ export default function HomePage() {
                 className:
                   "bg-white text-gray-800 align-items-center justify-center ease-in-out duration-300 hover:cursor-pointer space-y-2",
               }}
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
             >
               <OptionMUI
                 className="hover:bg-gray-200 transition-all px-2"
@@ -172,7 +201,13 @@ export default function HomePage() {
                 Code Generation
               </OptionMUI>
             </SelectMUI>
-            <Typography variant="h6" className="text-purple-500">
+            <Typography
+              variant="h6"
+              className="text-purple-500"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
               Enter Prompt
             </Typography>
             <Textarea
@@ -181,6 +216,8 @@ export default function HomePage() {
               className="w-full p-3 mb-3 border border-purple-300 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500"
               rows={4}
               placeholder="Enter a brief prompt here..."
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
             />
           </div>
           {/* /* From Uiverse.io by elijahgummer */}
@@ -194,10 +231,21 @@ export default function HomePage() {
             </div>
           </button>
           <div className="bg-white p-4 rounded-lg border border-purple-300 mt-4">
-            <Typography variant="h6" className="text-purple-500">
+            <Typography
+              variant="h6"
+              className="text-purple-500"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
               Enhanced Prompt:
             </Typography>
-            <Typography className="mt-2 text-gray-400">
+            <Typography
+              className="mt-2 text-gray-400"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
               {enhancedPrompt || "Your enhanced prompt will appear here..."}
             </Typography>
           </div>
