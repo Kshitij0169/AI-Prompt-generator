@@ -38,7 +38,7 @@ export default function HomePage() {
       {isLoading && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 transition-opacity duration-300 ease-in-out">
           <div className="p-6 rounded-lg flex items-center justify-center shadow-lg bg-white border border-gray-300">
-            <p className="text-[#9869b8] mb-4 text-center text-xl animate-pulse">
+            <p className="text-[#9869b8] mb-4 mr-3 text-center text-xl animate-pulse">
               Generating Prompt
             </p>
             <div className="flex gap-x-2">
