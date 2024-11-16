@@ -35,7 +35,7 @@ const Layout = ({ children }: LayoutProps) => {
             {children}
           </main>
           <footer className="bg-gray-200 text-gray-400 py-4 text-center shadow-inner">
-            <p>© 2024 AI Prompt Generator. All rights reserved.</p>
+            <p>© 2024 AI Prompt Enhancer. All rights reserved.</p>
           </footer>
         </div>
       </body>
