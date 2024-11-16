@@ -10,7 +10,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <html lang="en">
       <head>
-        <title>AI Prompt Generator</title>
+        <title>AI Prompt Enhancer</title>
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
           rel="stylesheet"
