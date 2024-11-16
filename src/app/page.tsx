@@ -71,9 +71,6 @@ export default function HomePage() {
             onChange={(e) => setUseCase(e.target.value)}
             className="w-full p-3 border border-purple-300 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500"
           >
-            <option value="generalEnhancement">
-              Pick a use case/Just enter a prompt
-            </option>
             <option value="generalEnhancement">General Enhancement</option>
             <option value="contentGeneration">Content Generation</option>
             <option value="codeReview">Code Review</option>
