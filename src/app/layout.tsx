@@ -20,14 +20,16 @@ const Layout = ({ children }: LayoutProps) => {
       <body className="bg-gray-100 text-gray-900 h-screen font-inter">
         <div className="flex flex-col min-h-screen justify-between">
           <header className="mx-auto py-4 px-8 rounded-none justify-items-center bg-gray-200 w-full shadow-inner">
-            <Image
-              src={"/logo.png"}
-              alt={"AI Prompt Generator Logo"}
-              width={455}
-              height={79}
-              className="shadow-lg"
-              priority={true}
-            />
+            <div className="flex justify-center">
+              <Image
+                src={"/logo1.png"}
+                alt={"AI Prompt Generator Logo"}
+                width={455}
+                height={79}
+                className="shadow-lg"
+                priority={true}
+              />
+            </div>
           </header>
           <main className="flex-grow p-4 flex items-center justify-center bg-gray-100">
             {children}
