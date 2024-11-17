@@ -6,6 +6,7 @@ export default function HomePage() {
   const [useCase, setUseCase] = useState("generalEnhancement");
   const [enhancedPrompt, setEnhancedPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [copySuccess, setCopySuccess] = useState("");
 
   const handleGeneratePrompt = async () => {
     if (!prompt.trim()) {
@@ -30,6 +31,14 @@ export default function HomePage() {
       setEnhancedPrompt("Error: Unable to generate prompt.");
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleCopyToClipboard = () => {
+    if (enhancedPrompt) {
+      navigator.clipboard.writeText(enhancedPrompt);
+      setCopySuccess("Copied to Clipboard!");
+      setTimeout(() => setCopySuccess(""), 2000);
     }
   };
 
@@ -106,11 +115,22 @@ export default function HomePage() {
           </div>
         </button>
 
-        <div className="bg-white p-4 rounded-lg border border-purple-300 mt-4">
+        <div className="bg-white p-4 rounded-lg border border-purple-300 mt-4 relative">
           <h2 className="text-purple-500 font-semibold">Enhanced Prompt:</h2>
           <p className="mt-2 text-gray-700">
             {enhancedPrompt || "Your enhanced prompt will appear here."}
           </p>
+          {enhancedPrompt && (
+            <button
+              onClick={handleCopyToClipboard}
+              className="absolute top-2 right-2 bg-purple-500 hover:bg-purple-700 text-white text-sm px-3 py-1 rounded"
+            >
+              Copy
+            </button>
+          )}
+          {copySuccess && (
+            <p className="text-green-500 text-xs mt-1">{copySuccess}</p>
+          )}
         </div>
       </div>
     </div>
